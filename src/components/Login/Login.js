@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import firebase from "firebase/app";
 import "firebase/auth";
-import { useContext, useState } from "react";
+import {   useState } from "react";
 import { useHistory, useLocation } from "react-router";
 
 import { Form, Button } from "react-bootstrap";
-// import firebaseConfig from "./firebase.config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebaseConfig from "./firebase.config";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { UserContext } from '../../../../App';
-import firebaseConfig from '../../ShareComponent/Login/firebase.config';
+// import { UserContext } from '../../../../App';
+// import firebaseConfig from './firebase.config';
+import { UserContext } from '../../App';
 
 
 if (!firebase.apps.length) {
@@ -157,8 +158,8 @@ function Login() {
     return (
         <div class="container">
 
-                <div class="mx-auto">
-                    <img src="http://themesitem.com/demos/html/jobortunity/jobortunity/images/home-page-logo.png"class="mx-auto"alt="" /></div>
+                {/* <div class="mx-auto">
+                    <img src="http://themesitem.com/demos/html/jobortunity/jobortunity/images/home-page-logo.png"class="mx-auto"alt="" /></div> */}
 
             <div class="row g-3">
                 <Form onSubmit={handleSubmit}>
@@ -224,7 +225,7 @@ function Login() {
                             type="button"
                             class="btn btn-outline-success mt-5"
                         >
-                            <FontAwesomeIcon icon={''} />
+                            {/* <FontAwesomeIcon icon={''} /> */}
                             <span class="p-4">Continue with Google</span>
                         </button>
                     </Form.Group>
