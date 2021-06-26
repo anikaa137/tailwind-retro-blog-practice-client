@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 import Home from "./components/HomeComponent/Home/Home";
 import AddBlog from "./components/Admin/AddBlog/AddBlog";
-import Login from './components/LoginComponent/Login'
+import Login from './components/ShareComponent/Login/Login'
 import AddAdmin from "./components/Admin/AddAdmin/AddAdmin";
-import PrivateRoute from './components/LoginComponent/PrivateRoute'
+import PrivateRoute from './components/ShareComponent/Login/PrivateRoute'
+import Sidebar from './components/ShareComponent/Sidebar/Sidebar'
 
 export const UserContext = createContext()
 
@@ -31,6 +32,9 @@ function App() {
           <Route path="/addAdmin">
              <AddAdmin/>
           </Route>
+          <Route path="/dashbord">
+            <Sidebar/>
+          </Route >
           <Route path="/login">
              <Login/>
           </Route >
