@@ -1,19 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function Blog() {
+const BlogDetailes = ({ blog }) => {
+    const { _id, title, Author, email, value, imageURL, date } = blog;
+
     return (
-
-
-        <main class="px-3">
-              <div class="text-4xl sm:text-5xl text-center my-10">What type of food do you like?</div>
-
-              <div class="grid md:grid-cols-3 gap-8 m-5 max-w-5xl m-auto">
-                <div class="bg-white border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                  <img src="https://picsum.photos/id/29/2106/1404" alt=""class="w-full h-48 sm:h-56 object-cover" />
+       <div class="bg-white border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                  <img src={imageURL}  alt=""class="w-full h-48 sm:h-56 object-cover" />
 
                     <div class="pt-6 mb-10 text-center object-cover">
-                    <div class="text-2xl font-bold text-purple-500 mb-4">Climb the Mountains</div>
-                    <p class="text-justify">The be might what days revellers, which sought to a nor. Land from to suits his some. Saw him counsel begun mother though but. Ofttimes soils of since mighty pollution.</p>
+                <div class="text-2xl font-bold text-purple-500 mb-4">{title}</div>
+                    <p class="text-justify">{value}.slice(1,10) </p>
                     <div className="mt-4">
 
                                 <div class="flex items-center justify-between mt-2 mx-6">
@@ -25,7 +21,7 @@ function Blog() {
                                         5
                                     </a>
                                 </div>
-                                {/* author with date & time */}
+
                                 <div class="author flex items-center -ml-3 my-3">
                                     <div class="user-logo">
                                         <img class="w-12 h-12 object-cover rounded-full mx-4  shadow" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=731&q=80" alt="avatar" />
@@ -37,15 +33,12 @@ function Blog() {
                             </div>
 
 
-                  {/* <button class="w-full text-lg h-16 text-white font-extrabold bg-purple-500">VIEW RECIPES</button> */}
-                </div>
-
 
                 </div>
 
-              </div>
-            </main>
-    )
-}
 
-export default Blog;
+                </div>
+    );
+};
+
+export default BlogDetailes;
