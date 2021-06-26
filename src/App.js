@@ -6,10 +6,11 @@ import {
   Route,
 
 } from "react-router-dom";
-import Home from "./components/Home/Home";
+import Home from "./components/HomeComponent/Home/Home";
 import AddBlog from "./components/Admin/AddBlog/AddBlog";
-import Login from './components/Login/Login'
+import Login from './components/LoginComponent/Login'
 import AddAdmin from "./components/Admin/AddAdmin/AddAdmin";
+import PrivateRoute from './components/LoginComponent/PrivateRoute'
 
 export const UserContext = createContext()
 
@@ -24,15 +25,15 @@ function App() {
           <Route exact path="/">
           <Home/>
           </Route>
-          <Route path="/addBlog">
+          <PrivateRoute path="/addBlog">
             <AddBlog/>
-          </Route>
+          </PrivateRoute>
           <Route path="/addAdmin">
              <AddAdmin/>
           </Route>
           <Route path="/login">
              <Login/>
-          </Route>
+          </Route >
         </Switch>
     </Router>
     </UserContext.Provider>

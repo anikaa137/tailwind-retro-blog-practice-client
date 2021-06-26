@@ -1,10 +1,28 @@
-import React, { useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Transition } from "@headlessui/react";
+import { UserContext } from "../../../App";
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+
+  useEffect(() => {
+    fetch("http://localhost:5000/isAdmin", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: loggedInUser.email }),
+    })
+        .then((res) => res.json())
+        .then((res) => setIsAdmin(res));
+}, []);
+// console.log(isAdmin)
+
   return (
+
     <div>
       <nav className="bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,34 +50,54 @@ function Navbar() {
                   >
                     Team
                   </a>
-
                   <a
+                    href="#Team"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                     Review
+                  </a>
+                  {isAdmin && (<div>
+                    <Link to="/addBlog">   <a
                     href="#Projects"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Projects
-                  </a>
-
-                  <a
-                    href="#Calendar"
+                    Add Blog
+                    </a> </Link>
+                    <Link to="/manage">   <a
+                    href="##"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Calendar
+                     Mange
+                  </a> </Link>
+                  </div>
+
+                  )}
+                     <a
+                    href="##"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >{loggedInUser.email ? (
+                    ""
+                ) : (
+                    <Link
+                        to="/login"
+
+                    >
+                        Login
+                    </Link>
+                )}
+                {loggedInUser.email ? (
+                    <Link
+
+                        onClick={() => setLoggedInUser({})}
+                    >
+                        {" "}
+                        Logout
+                    </Link>
+                ) : (
+                    <p></p>
+                )}
                   </a>
 
-                  <a
-                    href="#Reports"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {/* Reports */}
-                    {/* dropdown start */}
-                    <select class="bg-gray-800 text-gray-300 hover:bg-gray-700  px-3 py-2 rounded-md text-sm font-medium">
-                      <option>Login</option>
-                      <option>Add Blog</option>
-                      <option>Manage Blog</option>
-                    </select>
-                    {/* dropdown end */}
-                  </a>
                 </div>
               </div>
             </div>
