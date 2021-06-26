@@ -156,92 +156,244 @@ function Login() {
     // console.log(user);
 
     return (
-        <div class="container">
+        <div>
+        <div class="min-h-screen flex flex-col items-center justify-center bg-gray-300">
+          <div class="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
+            <div class="mt-10">
+              <form action="#" onSubmit={handleSubmit}>
+                <div class=" font-medium text-xl sm:text-2xl uppercase text-gray-800">
+                  Login To Your Account
+                </div>
 
-                {/* <div class="mx-auto">
-                    <img src="http://themesitem.com/demos/html/jobortunity/jobortunity/images/home-page-logo.png"class="mx-auto"alt="" /></div> */}
+                {/* google sign in */}
+                <Form.Group>
+                  <button
+                    onClick={googleSignIn}
+                    type="button"
+                    class="w-full relative mt-6 border rounded-md py-2 text-md text-gray-800 bg-gray-100 hover:bg-gray-200"
+                  >
+                    <span class="p-4">
+                      <i class="fab fa-google-plus-g"></i> Continue with Google
+                    </span>
+                  </button>
+                </Form.Group>
 
-            <div class="row g-3">
-                <Form onSubmit={handleSubmit}>
-                    <h1 class="mt-5">
-                        {newUser ? <h5>create an account</h5> : <h5>Log In</h5>}
-                    </h1>{" "}
-                    <br />
-                    <div>
-                        {newUser && (<div class="mb-3 col-md-4">
-                            <label for="name" class="form-label">Your name</label>
-                            <input type="text" class="form-control" name="name" onBlur={handleBlur} placeholder="Your Name" required />
-                        </div>)}
+                <div class="relative mt-10 h-px bg-gray-300">
+                  <div class="absolute left-0 top-0 flex justify-center w-full -mt-2">
+                    <span class="bg-white px-4 text-xs text-gray-500 uppercase">
+                      Or Register With Email
+                    </span>
+                  </div>
+                </div>
 
-                    </div>
-                    <div class="mb-3 col-md-4">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" onBlur={handleBlur} placeholder="your email" required />
-                    </div>
+                {/* new user name field */}
+                {newUser && (
+                  <div class="flex flex-col mb-6">
+                    <label
 
-
-                    <div class="mb-3 col-md-4">
-                        <label for="password" class="form-label">password</label>
-                        <input type="password" class="form-control" name="password" onBlur={handleBlur} placeholder="password" required />
-                    </div>
-
-
-
-                    {newUser && (
-                        <div class="mb-3 col-md-4">
-                            <label for="password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" name="confirm_password" onBlur={handleBlur} placeholder="confirm_password" required />
-                        </div>
-
-                    )}
-
-                    <Button type="submit">
-                        {newUser ? "Sign up" : "Log In"}
-                    </Button>
-                    <Form.Group>
-                        <label htmlFor="newUser">
-                            {newUser
-                                ? "Already have an account ?"
-                                : "Don't Have an Account ?"}{" "}
-                        </label>
-                        <button
-                            style={{
-                                background: "none",
-                                color: "red",
-                                outline: "none",
-                                border: "none",
-                                textDecoration: "underline",
-                                fontSize: "20px",
-                            }}
-                            onClick={() => setNewUser(!newUser)}
-                            name="newUser"
+                      class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                    >
+                      Your Name:
+                    </label>
+                    <div class="relative">
+                      <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                        <svg
+                          class="h-6 w-6"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
                         >
-                            {newUser ? "signIn" : "create an account"}
-                        </button>
-                    </Form.Group>
-                    <Form.Group>
-                        <button
-                            onClick={googleSignIn}
-                            type="button"
-                            class="btn btn-outline-success mt-5"
+                          <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                        </svg>
+                      </div>
+
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        onBlur={handleBlur}
+                        required
+                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                        placeholder="Your Name"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* email address */}
+                <div class="flex flex-col mb-6">
+                  <label
+                    for="email"
+                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                  >
+                    E-Mail Address:
+                  </label>
+                  <div class="relative">
+                    <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                      <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                      </svg>
+                    </div>
+
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      onBlur={handleBlur}
+                      required
+                      class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                      placeholder="E-Mail Address"
+                    />
+                  </div>
+                </div>
+
+                {/* password field */}
+                <div class="flex flex-col mb-6">
+                  <label
+                    for="password"
+                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                  >
+                    Password:
+                  </label>
+                  <div class="relative">
+                    <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                      <span>
+                        <svg
+                          class="h-6 w-6"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
                         >
-                            {/* <FontAwesomeIcon icon={''} /> */}
-                            <span class="p-4">Continue with Google</span>
-                        </button>
-                    </Form.Group>
-                </Form>
+                          <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      onBlur={handleBlur}
+                      required
+                      class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                      placeholder="Password"
+                    />
+                  </div>
+                </div>
+
+                {/* confirm password for new user */}
+                {newUser && (
+                  <div class="flex flex-col mb-6">
+                    <label
+                      for="password"
+                      class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                    >
+                      Confirm Password:
+                    </label>
+                    <div class="relative">
+                      <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                        <span>
+                          <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                          </svg>
+                        </span>
+                      </div>
+
+                      <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        onBlur={handleBlur}
+                        required
+                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+                        placeholder="Confirm Password"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* submit button */}
+                <button
+                  type="submit"
+                  class="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded py-2 w-full transition duration-150 ease-in"
+                >
+                  <span class="mr-2 uppercase">
+                    {newUser ? "Sign up" : "Log in"}
+                  </span>
+                  <span>
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </span>
+                </button>
+
+                {/*  */}
+                <Form.Group class="justify-center flex pt-4">
+                  <label htmlFor="newUser">
+                    {newUser
+                      ? "Already have an account?"
+                      : "Don't Have an Account?"}{" "}
+                  </label>
+                  <button
+                    style={{
+                      background: "none",
+                      color: "red",
+                      outline: "none",
+                      border: "none",
+                      // textDecoration: "underline",
+                      fontSize: "20px",
+                    }}
+                    onClick={() => setNewUser(!newUser)}
+                    name="newUser"
+                  >
+                    <span class="pl-2"></span>
+                    {newUser ? "SignIn" : "Create an account"}
+                  </button>
+                </Form.Group>
+              </form>
             </div>
-
-            {user.success ? (
-                <h2 style={{ color: "green" }}>
-                    {" "}
-                    user {newUser ? "created" : "logged In"} successfully
-                </h2>
-            ) : (
-                <h5 style={{ color: "red" }}> {user.error}</h5>
-            )}
-
+          </div>
         </div>
+
+        {user.success ? (
+          <h2 style={{ color: "green" }}>
+            {" "}
+            user {newUser ? "created" : "logged In"} successfully
+          </h2>
+        ) : (
+          <h5 style={{ color: "red" }}> {user.error}</h5>
+        )}
+      </div>
     )
 }
 
