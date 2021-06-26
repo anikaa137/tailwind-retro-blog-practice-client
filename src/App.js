@@ -12,6 +12,8 @@ import Login from './components/ShareComponent/Login/Login'
 import AddAdmin from "./components/Admin/AddAdmin/AddAdmin";
 import PrivateRoute from './components/ShareComponent/Login/PrivateRoute'
 import Sidebar from './components/ShareComponent/Sidebar/Sidebar'
+import BlogDetailes from './components/HomeComponent/BlogDetailes/BlogDetailes'
+
 
 export const UserContext = createContext()
 
@@ -29,6 +31,9 @@ function App() {
           <PrivateRoute path="/addBlog">
             <AddBlog/>
           </PrivateRoute>
+          <Route path="/blogdetailes/:id">
+             <BlogDetailes/>
+          </Route>
           <Route path="/addAdmin">
              <AddAdmin/>
           </Route>
