@@ -20,7 +20,7 @@ const AddBlog = () => {
 
 
 
-const onSubmit = data => {
+const onSubmit = (data,e) => {
         // console.log(data)
     const eventdata = {
         title: data.title,
@@ -33,7 +33,7 @@ const onSubmit = data => {
         time: new Date().setHours(24)
     }
     console.log(eventdata)
-    const url = `http://localhost:5000/addingBlog`;
+    const url = `http://localhost:5000/addBlog`;
     fetch(url, {
         method: "POST",
         headers: {
@@ -44,6 +44,7 @@ const onSubmit = data => {
     .then((result) => {
         if (result) {
             alert('Succefully add a blog')
+            e.target.reset()
         }
 
     })
