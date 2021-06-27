@@ -11,7 +11,7 @@ function BlogDetailes() {
     const [blogsdetails, setBologDetails] = useState([]);
     console.log(blogsdetails)
     useEffect(() => {
-        fetch(`http://localhost:5000/blogDetails/${id}`)
+        fetch(`https://glacial-woodland-81224.herokuapp.com/blogDetails/${id}`)
             .then(res => res.json())
             .then(data => setBologDetails(data))
      },[])

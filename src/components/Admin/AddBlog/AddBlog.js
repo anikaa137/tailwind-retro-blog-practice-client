@@ -33,7 +33,7 @@ const onSubmit = (data,e) => {
         time: new Date().setHours(24)
     }
     console.log(eventdata)
-    const url = `http://localhost:5000/addBlog`;
+    const url = `https://glacial-woodland-81224.herokuapp.com/addBlog`;
     fetch(url, {
         method: "POST",
         headers: {
